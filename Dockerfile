@@ -6,3 +6,5 @@ RUN echo "Meteor version:";meteor --version;which meteor;echo "Meteor node versi
 USER root
 RUN git clone https://www.agwa.name/git/git-crypt.git
 RUN cd git-crypt && make && make install
+
+USER circleci
