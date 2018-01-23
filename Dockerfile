@@ -7,4 +7,11 @@ USER root
 RUN git clone https://www.agwa.name/git/git-crypt.git
 RUN cd git-crypt && make && make install
 
+USER node
+ENV NPM_CONFIG_PREFIX=~/.npm
+RUN npm install --global chimp
+
+USER root
+RUN ln -s /home/node/.npm/bin/chimp /usr/local/bin/
+
 USER circleci
