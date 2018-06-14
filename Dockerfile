@@ -1,6 +1,6 @@
 FROM circleci/node:8.11-browsers
 
-RUN curl "https://install.meteor.com/?release=1.6.1.1" | /bin/sh
+RUN curl "https://install.meteor.com/?release=1.7.0.3" | /bin/sh
 RUN echo "Meteor version:";meteor --version;which meteor;echo "Meteor node version:";meteor node -v;echo "Meteor npm version:";meteor npm -v;echo "Java version:";java -version
 
 USER root
