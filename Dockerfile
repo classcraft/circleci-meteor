@@ -2,7 +2,7 @@ FROM circleci/node:12-browsers
 
 RUN google-chrome --version
 
-RUN curl "https://install.meteor.com/?release=1.10.2" | /bin/sh
+RUN curl "https://install.meteor.com/?release=1.11.1" | /bin/sh
 RUN echo "Meteor version:";meteor --version;which meteor;echo "Meteor node version:";meteor node -v;echo "Meteor npm version:";meteor npm -v;echo "Java version:";java -version
 RUN meteor npm install --global yarn
 
