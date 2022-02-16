@@ -1,7 +1,7 @@
 FROM circleci/node:14
 
 RUN curl "https://install.meteor.com/?release=2.6" | /bin/sh
-RUN echo "Meteor version:";meteor --version;which meteor;echo "Meteor node version:";meteor node -v;echo "Meteor npm version:";meteor npm -v;echo "Java version:";java -version
+RUN echo "Meteor version:";meteor --version;which meteor;echo "Meteor node version:";meteor node -v;echo "Meteor npm version:";meteor npm -v;echo
 RUN meteor npm install --global yarn
 
 USER root
