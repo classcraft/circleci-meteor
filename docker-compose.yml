@@ -1,0 +1,11 @@
+version: "2.0"
+
+services:
+  circleci-meteor:
+    container_name: circleci-meteor
+    image: classcraft/circleci-meteor:${METEOR}
+    build:
+      context: .
+      args:
+        NODE: ${NODE}
+        METEOR: ${METEOR}

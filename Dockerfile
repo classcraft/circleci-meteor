@@ -1,14 +1,31 @@
-FROM circleci/node:8-browsers
+ARG METEOR
+ARG NODE
 
-RUN google-chrome --version
-
-RUN curl "https://install.meteor.com/?release=1.8" | /bin/sh
-RUN echo "Meteor version:";meteor --version;which meteor;echo "Meteor node version:";meteor node -v;echo "Meteor npm version:";meteor npm -v;echo "Java version:";java -version
-RUN meteor npm install --global yarn
-RUN meteor npm install --global chimpy@classcraft/chimpy#babel_7_dist
+FROM circleci/node:${NODE}-browsers
 
 USER root
-RUN git clone https://www.agwa.name/git/git-crypt.git
-RUN cd git-crypt && make && make install
+
+RUN true \
+  apt-get update && \
+  apt-get install -y git-crypt && \
+  rm -rf /var/lib/apt/lists/* && \
+  true
 
 USER circleci
+
+WORKDIR /home/circleci/meteor
+
+RUN curl "https://install.meteor.com/?release=${METEOR}" | /bin/sh
+RUN meteor --version
+RUN meteor npm install --global yarn
+
+WORKDIR /home/circleci
+
+RUN \
+  git-crypt --version && \
+  google-chrome --version && \
+  meteor --version && \
+  meteor node --version && \
+  meteor npm --version && \
+  meteor yarn --version && \
+  true
