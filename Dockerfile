@@ -13,7 +13,7 @@ RUN true \
 
 USER circleci
 
-WORKDIR /home/meteor
+WORKDIR /home/circleci/meteor
 
 RUN curl "https://install.meteor.com/?release=${METEOR}" | /bin/sh
 RUN meteor --version
