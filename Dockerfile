@@ -1,9 +1,10 @@
 ARG NODE
-FROM circleci/node:${NODE}-browsers
+FROM --platform=linux/amd64 cimg/node:${NODE}-browsers
 
 USER root
 
 RUN true \
+  add-apt-repository universe && \
   apt-get update && \
   apt-get install -y git-crypt && \
   rm -rf /var/lib/apt/lists/* && \
@@ -20,11 +21,10 @@ RUN meteor npm install --global yarn
 
 WORKDIR /home/circleci
 
-RUN date +%s > image-epoch.txt
+RUN date +%Y-%m-%d-%s > image-epoch.txt
 
 RUN \
   git-crypt --version && \
-  google-chrome --version && \
   meteor --version && \
   meteor node --version && \
   meteor npm --version && \
