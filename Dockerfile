@@ -1,5 +1,5 @@
 ARG NODE
-FROM --platform=linux/amd64 cimg/node:${NODE}-browsers
+FROM --platform=linux/amd64 cimg/node:${NODE}
 
 USER root
 
@@ -28,6 +28,5 @@ RUN \
   meteor --version && \
   meteor node --version && \
   meteor npm --version && \
-  meteor yarn --version && \
   cat /home/circleci/image-epoch.txt && \
   true
