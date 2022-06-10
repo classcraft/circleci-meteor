@@ -1,5 +1,5 @@
 ARG NODE
-FROM --platform=linux/amd64 cimg/node:${NODE}-browsers
+FROM --platform=linux/amd64 cimg/node:${NODE}
 
 USER root
 
@@ -20,6 +20,8 @@ RUN meteor --version
 RUN meteor npm install --global yarn
 
 WORKDIR /home/circleci
+
+RUN npx cypress@${CYPRESS} install --force
 
 RUN date +%Y-%m-%d-%s > image-epoch.txt
 
