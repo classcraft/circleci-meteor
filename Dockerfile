@@ -3,7 +3,7 @@ FROM --platform=linux/amd64 cimg/node:${NODE}
 
 USER root
 
-RUN true \
+RUN \
   add-apt-repository universe && \
   apt-get update && \
   apt-get install -y \
@@ -20,8 +20,8 @@ RUN true \
   xauth \
   xvfb \
   && \
-  rm -rf /var/lib/apt/lists/* && \
-  true
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
 USER circleci
 
@@ -34,6 +34,7 @@ RUN meteor npm install --global yarn
 
 WORKDIR /home/circleci
 
+ARG CYPRESS
 RUN npx cypress@${CYPRESS} install --force
 
 RUN date +%Y-%m-%d-%s > image-epoch.txt
