@@ -4,7 +4,7 @@ This repository is used as a custom docker file to run CircleCI continuous integ
 
 ## Instructions
 
-> Ask @tgregoire because he's the owner of the Docker Hub account for `classcraft/circleci-meteor`
+> The Docker Hub account is in 1password to access `classcraft/circleci-meteor`
 
 ```sh
 docker-compose build --pull
