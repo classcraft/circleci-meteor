@@ -23,6 +23,14 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
+ARG MONGODB_TOOLS
+RUN \
+  curl "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2204-x86_64-${MONGODB_TOOLS}.deb" > "./mongodb-database-tools.deb" && \
+  apt install "./mongodb-database-tools.deb" && \
+  rm -f "./mongodb-database-tools.deb" && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
+
 USER circleci
 
 WORKDIR /home/circleci/meteor
@@ -45,5 +53,6 @@ RUN \
   meteor node --version && \
   meteor npm --version && \
   meteor yarn --version && \
+  mongorestore --version && \
   cat /home/circleci/image-epoch.txt && \
   true
