@@ -23,11 +23,13 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
+ARG MONGOSH
 ARG MONGODB_TOOLS
 RUN \
+  curl "https://downloads.mongodb.com/compass/mongodb-mongosh_${MONGOSH}_amd64.deb" > "./mongodb-mongosh.deb" && \
   curl "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2204-x86_64-${MONGODB_TOOLS}.deb" > "./mongodb-database-tools.deb" && \
-  apt install "./mongodb-database-tools.deb" && \
-  rm -f "./mongodb-database-tools.deb" && \
+  apt install "./mongodb-mongosh.deb" "./mongodb-database-tools.deb" && \
+  rm -f "./mongodb-mongosh.deb" "./mongodb-database-tools.deb" && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 

@@ -9,5 +9,6 @@ services:
       args:
         CYPRESS: ${CYPRESS}
         METEOR: ${METEOR}
+        MONGOSH: ${MONGOSH}
         MONGODB_TOOLS: ${MONGODB_TOOLS}
         NODE: ${NODE}
