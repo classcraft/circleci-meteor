@@ -3,12 +3,13 @@ version: "2.0"
 services:
   circleci-meteor:
     container_name: circleci-meteor
-    image: classcraft/circleci-meteor:${METEOR}
+    image: classcraft/circleci-meteor:${METEOR}-${REV}
     build:
       context: .
       args:
         CYPRESS: ${CYPRESS}
         METEOR: ${METEOR}
-        MONGOSH: ${MONGOSH}
         MONGODB_TOOLS: ${MONGODB_TOOLS}
+        MONGOSH: ${MONGOSH}
         NODE: ${NODE}
+        REV: ${REV}
